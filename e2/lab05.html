@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
+  </head>
+  <body>
+    <table width="800px" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center">STT</td>
+        <td align="center">Tên hàng</td>
+        <td align="center">Số lượng có</td>
+        <td align="center">Số lượng mua</td>
+        <td align="center">Đơn giá</td>
+        <td align="center">Chọn Mua</td>
+      </tr>
+      <tr>
+        <td align="center">1</td>
+        <td>CPU</td>
+        <td align="center">10</td>
+        <td width="170px">
+          <input type="text" disabled="true" id="cpu" name="cpu" value="0" />
+        </td>
+        <td align="center">100</td>
+        <td align="center">
+          <input id="chkDisable" type="checkbox" onchange="check()" />
+        </td>
+      </tr>
+      <tr>
+        <td align="center">2</td>
+        <td>Ram</td>
+        <td align="center">10</td>
+        <td width="170px">
+          <input type="text" disabled="true" id="ram" name="ram" value="0" />
+        </td>
+        <td align="center">50</td>
+        <td align="center">
+          <input id="chkDisable2" type="checkbox" onchange="check()" />
+        </td>
+      </tr>
+      <tr>
+        <td align="center">3</td>
+        <td>HDD</td>
+        <td align="center">10</td>
+        <td width="170px">
+          <input type="text" disabled="true" id="hdd" name="hdd" value="0" />
+        </td>
+        <td align="center">80</td>
+        <td align="center">
+          <input id="chkDisable3" type="checkbox" onchange="check()" />
+        </td>
+      </tr>
+      <tr>
+        <td align="center"></td>
+        <td><button onclick="onSubmit()">OK</button></td>
+        <td colspan="3" align="right">
+          Tổng: <input type="text" id="Sum" value="0" disabled="true" />
+        </td>
+
+        <td align="center"><input type="checkbox" id="VAT" />VAT</td>
+      </tr>
+    </table>
+
+    <script>
+      function onSubmit() {
+        var a = document.getElementById("cpu").value;
+        var b = document.getElementById("ram").value;
+        var c = document.getElementById("hdd").value;
+        sum = a + b + c;
+        if (a > 10 || b > 10 || c > 10) {
+          alert("Số lượng không đủ!!!");
+        }
+        if (document.getElementById("VAT").checked) {
+          document.getElementById("Sum").value = sum * 1.1;
+        } else {
+          document.getElementById("Sum").value = sum;
+        }
+      }
+      function check() {
+        var chkNode = document.getElementById("chkDisable").checked;
+        var chkNode2 = document.getElementById("chkDisable2").checked;
+        var chkNode3 = document.getElementById("chkDisable3").checked;
+
+        if (chkNode) {
+          document.getElementById("cpu").disabled = false;
+        } else {
+          document.getElementById("cpu").disabled = true;
+        }
+        if (chkNode2) {
+          document.getElementById("ram").disabled = false;
+        } else {
+          document.getElementById("ram").disabled = true;
+        }
+        if (chkNode3) {
+          document.getElementById("hdd").disabled = false;
+        } else {
+          document.getElementById("hdd").disabled = true;
+        }
+      }
+    </script>
+  </body>
+</html>
